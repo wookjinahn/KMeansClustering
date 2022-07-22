@@ -1,31 +1,31 @@
 //
-// Created by wj on 22. 7. 21.
+// Created by wj on 22. 7. 23.
 //
 
-#include "KMeans.hpp"
+#include "KMeansPP.hpp"
 
 namespace camel
 {
-	KMeans::KMeans()
+	KMeansPP::KMeansPP()
 	{
 	}
 
-	KMeans::KMeans(std::vector<Point3> data, float k)
+	KMeansPP::KMeansPP(std::vector<Point3> data, float k)
 		: mData(std::move(data))
 	{
 	}
 
-	std::vector<Point3> KMeans::GetData() const
+	std::vector<Point3> KMeansPP::GetData() const
 	{
 		return mData;
 	}
 
-	void KMeans::SetData(const std::vector<Point3>& data)
+	void KMeansPP::SetData(const std::vector<Point3>& data)
 	{
 		mData = data;
 	}
 
-	void KMeans::FromPCD(const std::string& inputPath)
+	void KMeansPP::FromPCD(const std::string& inputPath)
 	{
 		mData.reserve(307200);
 
@@ -63,7 +63,7 @@ namespace camel
 		std::cout << "FromPCD : " << mData.size() << std::endl;
 	}
 
-	void KMeans::ToPCD(const std::vector<camel::Point3>& data, int num)
+	void KMeansPP::ToPCD(const std::vector<camel::Point3>& data, int num)
 	{
 		std::string outputPath = "/home/wj/Desktop/Data/kmeans/output_data/";
 		time_t t;
@@ -103,7 +103,7 @@ namespace camel
 		fout.close();
 	}
 
-	void KMeans::Run()
+	void KMeansPP::Run()
 	{
 		setInitialCentroid();
 
@@ -132,7 +132,7 @@ namespace camel
 		clustering();
 	}
 
-	void KMeans::SaveResult()
+	void KMeansPP::SaveResult()
 	{
 		for (int i = 0; i < mModels.size(); i++)
 		{
@@ -141,7 +141,7 @@ namespace camel
 		std::cout << "save model num : " << mModels.size() << std::endl;
 	}
 
-	void KMeans::setInitialCentroid()
+	void KMeansPP::setInitialCentroid()
 	{
 //		std::sort(mData.begin(), mData.end(), camelVector::Point3D::AscendingByY);
 //		ToPCD(mData, 1111);
@@ -164,7 +164,7 @@ namespace camel
 		mCentroids.push_back(centroid);
 	}
 
-	void KMeans::assignCentroid()
+	void KMeansPP::assignCentroid()
 	{
 		for (int i = 0; i < mData.size(); i++)
 		{
@@ -187,7 +187,7 @@ namespace camel
 	}
 
 	// after update : true, Not need : false
-	bool KMeans::bUpdateCentroid()
+	bool KMeansPP::bUpdateCentroid()
 	{
 		std::vector<bool> checkUpdates;
 		for (int cenIndex = 0; cenIndex < mCentroids.size(); cenIndex++)
@@ -238,7 +238,7 @@ namespace camel
 	}
 
 	// Good near : true, Not : false
-	bool KMeans::bFindNearRate()
+	bool KMeansPP::bFindNearRate()
 	{
 		float resolution = 0.015625f;
 		float diameter = 2 * resolution * std::sqrt(2.0f);
@@ -274,7 +274,7 @@ namespace camel
 		return true;
 	}
 
-	void KMeans::generateCentroid()
+	void KMeansPP::generateCentroid()
 	{
 		// 기존의 마지막 centroid 기준으로 가장 멀리있는 data를 새로운 centroid로.
 		float distance = 0;
@@ -294,7 +294,7 @@ namespace camel
 		mCentroids.push_back(newCentroid);
 	}
 
-	void KMeans::clustering()
+	void KMeansPP::clustering()
 	{
 		for (int i = 0; i < mCentroids.size(); i++)
 		{

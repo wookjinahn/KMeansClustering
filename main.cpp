@@ -9,8 +9,8 @@ int main()
 {
 	const auto startTime = std::chrono::high_resolution_clock::now();
 	camel::KMeans kmeans;
-	kmeans.FromPCD("/home/wj/Desktop/Data/kmeans/2028_0.pcd");
-//	kmeans.SetK(1);
+	kmeans.FromPCD("/home/wj/Desktop/Data/kmeans/test4_ideal.pcd");
+//	kmeans.SetK(4);
 
 	kmeans.Run();
 	kmeans.SaveResult();
