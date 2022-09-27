@@ -5,7 +5,7 @@
 #ifndef KMEANSCLUSTERING_POINT2_HPP
 #define KMEANSCLUSTERING_POINT2_HPP
 
-#include <camel-euclid/Point2D.h>
+#include <camel-euclid/Point2D.hpp>
 
 namespace camel
 {

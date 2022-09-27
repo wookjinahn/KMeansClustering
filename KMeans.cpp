@@ -105,7 +105,7 @@ namespace camel
 
 	void KMeans::Run()
 	{
-		setInitialCentroid();
+		setIni tialCentroid();
 
 		bool iterate = false;
 		int iterateNum = 0;

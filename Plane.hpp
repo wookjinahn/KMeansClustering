@@ -7,7 +7,7 @@
 
 #include <vector>
 #include <cmath>
-#include <camel-euclid/Point3D.h>
+#include <camel-euclid/Point3D.hpp>
 namespace Model
 {
 	class Plane

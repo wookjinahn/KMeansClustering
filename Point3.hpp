@@ -8,7 +8,7 @@
 #include <iostream>
 #include <cmath>
 #include <random>
-#include <camel-euclid/Point3D.h>
+#include <camel-euclid/Point3D.hpp>
 
 #include "Point2.hpp"
 
